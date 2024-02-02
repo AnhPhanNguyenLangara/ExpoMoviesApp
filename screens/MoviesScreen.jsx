@@ -23,9 +23,9 @@ const movieOptions = [
 
 export default function MoviesScreen() {
     return (
-            <PickerListContainer
-                listRoute={listRoute}
-                options={movieOptions}
-            ></PickerListContainer>
+        <PickerListContainer
+            listRoute={listRoute}
+            options={movieOptions}
+        ></PickerListContainer>
     )
 }

@@ -21,7 +21,6 @@ const tvOptions = [
     },
 ]
 
-
 export default function TVScreen() {
     return (
         <PickerListContainer

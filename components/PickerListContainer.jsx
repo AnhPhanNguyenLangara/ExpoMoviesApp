@@ -2,6 +2,7 @@ import RNPickerSelect from 'react-native-picker-select'
 import { useEffect, useState } from 'react'
 import { ActivityIndicator } from 'react-native-paper'
 import TitlesList from './TitlesList'
+import { StyleSheet, View } from 'react-native'
 
 export default function PickerListContainer({ listRoute, options }) {
     const [option, setOption] = useState(options[0].value)
@@ -20,7 +21,9 @@ export default function PickerListContainer({ listRoute, options }) {
                     process.env.EXPO_PUBLIC_API_KEY,
             )
             try {
-                const response = await fetch(URL,{signal: abortController.signal})
+                const response = await fetch(URL, {
+                    signal: abortController.signal,
+                })
                 if (response.ok) {
                     const data = await response.json()
                     return data.results
@@ -51,8 +54,8 @@ export default function PickerListContainer({ listRoute, options }) {
             setList(results_padded)
             setLoading(false)
         })
-        return ()=> {
-            abortController.abort();
+        return () => {
+            abortController.abort()
         }
     }, [option])
 
@@ -61,13 +64,38 @@ export default function PickerListContainer({ listRoute, options }) {
         output = <TitlesList list={list} />
     }
     return (
-        <>
+        <View style={{ paddingVertical: 16, paddingHorizontal: 8, gap: 16 }}>
             <RNPickerSelect
                 placeholder={{}}
                 onValueChange={(value) => setOption(value)}
                 items={options}
+                style={pickerSelectStyles}
             ></RNPickerSelect>
             {output}
-        </>
+        </View>
     )
 }
+
+const pickerSelectStyles = StyleSheet.create({
+    inputIOS: {
+        fontSize: 16,
+        paddingVertical: 12,
+        paddingHorizontal: 10,
+        borderWidth: 1,
+        borderColor: 'gray',
+        borderRadius: 4,
+        color: 'black',
+        paddingRight: 30, // to ensure the text is never behind the icon
+    },
+    inputAndroid: {
+        backgroundColor: 'lightgray',
+        fontSize: 16,
+        paddingHorizontal: 10,
+        paddingVertical: 8,
+        borderWidth: 2,
+        borderColor: 'purple',
+        borderRadius: 8,
+        color: 'black',
+        paddingRight: 30, // to ensure the text is never behind the icon
+    },
+})

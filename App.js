@@ -49,6 +49,7 @@ function ListScreen() {
             </Appbar.Header>
             <Tab.Navigator
                 screenOptions={{
+                    tabBarLabelStyle: { fontSize: 12 },
                     tabBarIndicatorStyle: {
                         backgroundColor: theme.colors.primary,
                     },
