@@ -59,7 +59,10 @@ export default function ItemCard({ item }) {
                     style={{ flex: 1 }}
                 />
                 <View style={{ flex: 2 }}>
-                    <Card.Title title={name} />
+                    <Card.Title
+                        title={name}
+                        titleStyle={{ fontWeight: 'bold' }}
+                    />
                     <Card.Content>
                         <Text variant="bodyLarge">
                             Popularity: {popularity}
@@ -98,7 +101,10 @@ export default function ItemCard({ item }) {
                     style={{ flex: 1 }}
                 />
                 <View style={{ flex: 2 }}>
-                    <Card.Title title={name} />
+                    <Card.Title
+                        title={name}
+                        titleStyle={{ fontWeight: 'bold' }}
+                    />
                     <Card.Content>
                         <Text variant="bodyLarge">
                             Popularity: {popularity}
